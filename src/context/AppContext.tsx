@@ -1,6 +1,11 @@
 import { createContext, ReactNode, useState } from 'react';
 import { easyLetters, hardLetters } from '../constants/letters';
+import { defaultCategories } from '../constants/categories';
 
+interface Category {
+  name?: string;
+  bgColor?: string;
+}
 interface AppContext {
   mobileMenu: boolean;
   tgMobileMenu: () => void;
@@ -11,6 +16,8 @@ interface AppContext {
   nextTurn: () => void;
   pointAwarded: boolean;
   setPointAwarded: (prev: boolean) => void;
+  categories: Category[];
+  category: Category;
 }
 
 interface AppProvider {
@@ -22,7 +29,8 @@ const AppContext = createContext({} as AppContext);
 export const AppProvider = ({ children }: AppProvider) => {
   const [letters, setLetters] = useState(easyLetters);
   const [letter, setLetter] = useState('');
-
+  const [categories, setCategories] = useState(defaultCategories);
+  const [category, setCategory] = useState({});
   const [mobileMenu, setMobileMenu] = useState(false);
   const [difficulty, setDifficulty] = useState<'easy' | 'hard'>(
     'easy'
@@ -47,7 +55,8 @@ export const AppProvider = ({ children }: AppProvider) => {
     let randomLetter = letters[randomNumber(letters.length)];
     randomLetter === '1' && (randomLetter = 'Ch');
     setLetter(randomLetter);
-    // setCategory({ ...categories[randomNumber(categories.length)] });
+    let randomCategory = categories[randomNumber(categories.length)];
+    setCategory(randomCategory);
     setPointAwarded(false);
   };
 
@@ -63,6 +72,8 @@ export const AppProvider = ({ children }: AppProvider) => {
         nextTurn,
         pointAwarded,
         setPointAwarded,
+        categories,
+        category,
       }}
     >
       {children}

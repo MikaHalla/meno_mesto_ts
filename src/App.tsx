@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import AppContext from './context/AppContext';
 import MenuButton from './components/MenuButton';
+import CategorySvg from './components/CategorySvg';
+import CategoryButton from './components/CategoryButton';
 
 const App = () => {
   const {
@@ -10,10 +12,17 @@ const App = () => {
     decreaseDifficulty,
     letter,
     nextTurn,
+    categories,
+    category,
   } = useContext(AppContext);
 
   return (
-    <div className="background">
+    <div
+      className="background"
+      style={{
+        background: `radial-gradient(circle, ${category.bgColor} 0%, hsl(0, 0%, 25%) 90%)`,
+      }}
+    >
       <section
         className={`settings-panel ${mobileMenu && 'visible'}`}
       >
@@ -35,9 +44,20 @@ const App = () => {
             activeStyle="hard"
           />
         </div>
-        <div className="categories"></div>
+        <div className="categories">
+          {categories.map((element) => (
+            <CategoryButton
+              key={element.name}
+              name={element.name}
+              bgColor={element.bgColor}
+            />
+          ))}
+        </div>
       </section>
       <section className="game-area">
+        <div className="category-bg">
+          <CategorySvg {...category} />
+        </div>
         <div className="fa-icon" onClick={tgMobileMenu}>
           <i className="fa-solid fa-gear"></i>
         </div>
@@ -50,14 +70,14 @@ const App = () => {
         </ul>
         <button
           className="button-next-turn"
-          onClick={nextTurn}
-          // disabled={categories.length === 0}
+          onClick={() => nextTurn()}
+          disabled={categories.length === 0}
         >
           {letter === ''
             ? 'START'
-            : // : categories.length === 0
-              // ? 'NO CATEGORIES'
-              'NEXT'}
+            : categories.length === 0
+            ? 'NO CATEGORIES'
+            : 'NEXT'}
         </button>
       </section>
     </div>
