@@ -46,11 +46,7 @@ const App = () => {
         </div>
         <div className="categories">
           {categories.map((element) => (
-            <CategoryButton
-              key={element.name}
-              name={element.name}
-              bgColor={element.bgColor}
-            />
+            <CategoryButton key={element.name} {...element} />
           ))}
         </div>
       </section>

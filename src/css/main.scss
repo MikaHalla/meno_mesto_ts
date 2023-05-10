@@ -63,6 +63,8 @@ body {
       max-width: 768px;
       display: flex;
       justify-content: space-between;
+      margin-bottom: 4em;
+      font-size: 1.5em;
 
       .easy {
         color: black;
@@ -76,6 +78,45 @@ body {
 
       h1 {
         cursor: pointer;
+      }
+    }
+
+    .categories {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5em;
+
+      svg {
+        height: 4em;
+      }
+    }
+
+    .category {
+      // height: 100%;
+      // width: 100%;
+      // position: absolute;
+      // z-index: -1;
+      // transform: translateY(-2em);
+      // padding: 2em 1em 0;
+      display: flex;
+      justify-content: center;
+
+      &-icon {
+        flex-basis: 33%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          height: 4em;
+        }
+
+        @media screen and (min-width: 768px) {
+          flex-basis: 25%;
+        }
       }
     }
   }
