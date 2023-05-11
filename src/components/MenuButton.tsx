@@ -12,7 +12,11 @@ const MenuButton = ({ text, action, activeStyle }: MenuButton) => {
 
   return (
     <h1
-      className={activeStyle === difficulty ? 'easy' : 'hard'}
+      className={`cursor-pointer font-bold ${
+        activeStyle === difficulty
+          ? 'border-b-[5px] border-black pb-1 text-black'
+          : 'text-gray-300'
+      }`}
       onClick={action}
     >
       {text}

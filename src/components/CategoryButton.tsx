@@ -19,9 +19,8 @@ const CategoryButton = ({ name, bgColor }: Category) => {
 
   return (
     <div
-      className="category-icon"
+      className={`gap-16 ${active ? 'fill-black' : 'fill-gray-300'}`}
       onClick={() => handleClick(name!)}
-      style={active ? { fill: 'black' } : { fill: 'lightgray' }}
     >
       <CategorySvg name={name} bgColor={bgColor} />
     </div>

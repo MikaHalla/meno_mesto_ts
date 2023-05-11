@@ -20,6 +20,7 @@ interface Category {
 const CategorySvg = ({ name, fillColor }: Category) => {
   return (
     <svg
+      // className="h-16"
       version="1.1"
       id="Layer_1"
       x="0px"

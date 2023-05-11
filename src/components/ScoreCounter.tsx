@@ -20,7 +20,11 @@ const ScoreCounter = () => {
 
   return (
     <button
-      className={`score-counter ${mostRecentPoint && 'most-recent'}`}
+      className={`flex h-16 w-16 cursor-pointer select-none items-center justify-center rounded-full border-[3px] border-white bg-gray-700 p-2 text-4xl font-bold ${
+        mostRecentPoint
+          ? 'bg-white text-gray-700'
+          : 'bg-gray-700/50 text-white'
+      }`}
       onClick={handleClick}
       disabled={pointAwarded || categories.length === 0}
     >
