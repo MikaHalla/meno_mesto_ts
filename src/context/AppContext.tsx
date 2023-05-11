@@ -18,6 +18,8 @@ interface AppContext {
   setPointAwarded: (prev: boolean) => void;
   categories: Category[];
   category: Category;
+  players: number[];
+  tgCategory: (name: string) => void;
 }
 
 interface AppProvider {
@@ -36,6 +38,7 @@ export const AppProvider = ({ children }: AppProvider) => {
     'easy'
   );
   const [pointAwarded, setPointAwarded] = useState(false);
+  const players = [1, 2, 3, 4];
 
   const tgMobileMenu = () => setMobileMenu(!mobileMenu);
 
@@ -60,6 +63,23 @@ export const AppProvider = ({ children }: AppProvider) => {
     setPointAwarded(false);
   };
 
+  const tgCategory = (name: string) => {
+    const clickedCategory = categories.find(
+      (element) => element.name === name
+    );
+    if (clickedCategory) {
+      const filteredCategories = categories.filter(
+        (element) => element.name !== clickedCategory.name
+      );
+      setCategories(filteredCategories);
+    } else {
+      const addedCategory = defaultCategories.find(
+        (element) => element.name === name
+      )!;
+      setCategories([...categories, addedCategory]);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -74,6 +94,8 @@ export const AppProvider = ({ children }: AppProvider) => {
         setPointAwarded,
         categories,
         category,
+        players,
+        tgCategory,
       }}
     >
       {children}

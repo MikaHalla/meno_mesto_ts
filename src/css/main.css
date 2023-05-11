@@ -84,9 +84,9 @@ body {
 .background .settings-panel .category {
   display: flex;
   justify-content: center;
+  max-width: 768px;
 }
 .background .settings-panel .category-icon {
-  flex-basis: 33%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,6 +156,7 @@ body {
   font-size: 2em;
   font-weight: bold;
   border: 3px solid white;
+  cursor: pointer;
 }
 .background .game-area .score-board .score-counter.most-recent {
   color: rgb(70, 70, 70);

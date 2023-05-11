@@ -3,6 +3,8 @@ import AppContext from './context/AppContext';
 import MenuButton from './components/MenuButton';
 import CategorySvg from './components/CategorySvg';
 import CategoryButton from './components/CategoryButton';
+import ScoreBoard from './components/ScoreBoard';
+import { defaultCategories } from './constants/categories';
 
 const App = () => {
   const {
@@ -45,7 +47,7 @@ const App = () => {
           />
         </div>
         <div className="categories">
-          {categories.map((element) => (
+          {defaultCategories.map((element) => (
             <CategoryButton key={element.name} {...element} />
           ))}
         </div>
@@ -58,12 +60,8 @@ const App = () => {
           <i className="fa-solid fa-gear"></i>
         </div>
         <div className="letter">{letter}</div>
-        <ul className="score-board">
-          <button className="score-counter">0</button>
-          <button className="score-counter">0</button>
-          <button className="score-counter">0</button>
-          <button className="score-counter">0</button>
-        </ul>
+        <ScoreBoard />
+
         <button
           className="button-next-turn"
           onClick={() => nextTurn()}
