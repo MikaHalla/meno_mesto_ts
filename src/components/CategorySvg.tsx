@@ -15,12 +15,12 @@ interface Category {
   name?: string;
   bgColor?: string;
   fillColor?: string;
+  isSmallIcon?: boolean;
 }
 
-const CategorySvg = ({ name, fillColor }: Category) => {
+const CategorySvg = ({ name, fillColor, isSmallIcon }: Category) => {
   return (
     <svg
-      // className="h-16"
       version="1.1"
       id="Layer_1"
       x="0px"
@@ -28,6 +28,7 @@ const CategorySvg = ({ name, fillColor }: Category) => {
       viewBox="0 0 100 100"
       style={{
         fill: `${fillColor}`,
+        height: `${isSmallIcon === true ? '4rem' : null}`,
       }}
     >
       {(name === 'animal' && <Animal />) ||

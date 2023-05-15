@@ -12,7 +12,7 @@ const MenuButton = ({ text, action, activeStyle }: MenuButton) => {
 
   return (
     <h1
-      className={`cursor-pointer font-bold ${
+      className={`w-min cursor-pointer font-bold ${
         activeStyle === difficulty
           ? 'border-b-[5px] border-black pb-1 text-black'
           : 'text-gray-300'
